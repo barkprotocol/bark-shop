@@ -1,6 +1,6 @@
-### BARK - An E-commerce Store Using Next.js, Medusa, Solana, and Neon Postgres
-
 ![BARK Store Logo](https://ucarecdn.com/47528138-2792-4ab7-9fe4-962d17686119/barkshoplogo.png)
+
+#### BARK - An E-commerce Store Using Next.js, Medusa, Solana, and Neon Postgres
 
 ## Description
 
