@@ -1,0 +1,23 @@
+.category-images-widget {
+    padding: 16px;
+    background: #fff;
+    border-radius: 4px;
+  }
+  
+  .image-item {
+    position: relative;
+  }
+  
+  .image-preview {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .ant-btn-danger {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 4px;
+  }
+  

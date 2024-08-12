@@ -59,8 +59,6 @@ const plugins = [
     resolve: 'medusa-plugin-variant-images',
     options: {
       enableUI: true,
-      autoMigrate: true,
-      defaultImage: 'https://ucarecdn.com/74392932-2ff5-4237-a1fa-e0fd15725ecc/bark.svg',
     },
   },
   {
@@ -86,19 +84,19 @@ const plugins = [
     },
   },
   {
-    resolve: `medusa-payment-solana`,
+    resolve: `medusa-plugin-meilisearch`,
     options: {
-      solanaUrl: process.env.SOLANA_BLOCKCHAIN_URL, // Solana Blockchain URL
-      solanaApiKey: process.env.SOLANA_API_KEY, // Solana API key
-      usdcApiKey: process.env.USDC_API_KEY, // Circle API key for USDC payments
-      solanaPayApi: process.env.SOLANA_PAY_API, // Solana Pay API
+      host: process.env.MEILISEARCH_HOST,
+      apiKey: process.env.MEILISEARCH_API_KEY,
     },
   },
   {
-    resolve: `medusa-payment-bark`,
+    resolve: `medusa-payment-square`,
     options: {
-      barkTokenPublicKey: "2NTvEssJ2i998V2cMGT4Fy3JhyFnAzHFonDo9dbAkVrg", // BARK token public key
-      merchantId: process.env.MERCHANT_ID, // Solana wallet address (Merchant ID)
+      squareApplicationId: process.env.SQUARE_APPLICATION_ID,
+      squareAccessToken: process.env.SQUARE_ACCESS_TOKEN,
+      squareLocationId: process.env.SQUARE_LOCATION_ID,
+      webhookSecret: process.env.SQUARE_WEBHOOK_SECRET,
     },
   },
 ];

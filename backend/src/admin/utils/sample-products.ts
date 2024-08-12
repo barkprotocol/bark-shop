@@ -1,36 +1,114 @@
-import { AdminPostProductsReq, Region } from "@medusajs/medusa"
+import { AdminPostProductsReq, Region } from "@medusajs/medusa";
 
 type SampleProductsOptions = {
-  regions: Region[]
-  collection_id?: string
-}
+  regions: Region[];
+  collection_id?: string;
+};
 
-// can't use the ProductStatus imported
-// from the core within admin cusotmizations
+// Define the ProductStatus enum for product states
 enum ProductStatus {
-  PUBLISHED = "published"
+  PUBLISHED = "published",
 }
 
-export default function getSampleProducts ({
+export default function getSampleProducts({
   regions,
-  collection_id
+  collection_id,
 }: SampleProductsOptions): AdminPostProductsReq[] {
   return [
     {
-      title: "Medusa T-Shirt",
+      title: "BARK Club Tier 1 Badge",
+      status: ProductStatus.PUBLISHED,
+      collection_id,
+      discountable: false,
+      subtitle: null,
+      description: "Exclusive badge for Club Tier 1 members. Show off your membership with pride.",
+      handle: "club-tier-1-badge",
+      is_giftcard: false,
+      weight: 50,
+      images: [
+        "https://example.com/images/club-tier-1-badge.png"
+      ],
+      options: [],
+      variants: [
+        {
+          title: "One Size",
+          prices: regions.map((region) => ({
+            currency_code: region.currency_code,
+            amount: 0, // Assuming badges are free
+          })),
+          options: [],
+          inventory_quantity: 1000, // Large inventory for badges
+          manage_inventory: false, // No need to manage inventory for badges
+        },
+      ],
+    },
+    {
+      title: "BARK Club Tier 2 Badge",
+      status: ProductStatus.PUBLISHED,
+      collection_id,
+      discountable: false,
+      subtitle: null,
+      description: "Exclusive badge for Club Tier 2 members. Recognize your higher status.",
+      handle: "club-tier-2-badge",
+      is_giftcard: false,
+      weight: 50,
+      images: [
+        "https://example.com/images/club-tier-2-badge.png"
+      ],
+      options: [],
+      variants: [
+        {
+          title: "One Size",
+          prices: regions.map((region) => ({
+            currency_code: region.currency_code,
+            amount: 0, // Assuming badges are free
+          })),
+          options: [],
+          inventory_quantity: 1000, // Large inventory for badges
+          manage_inventory: false, // No need to manage inventory for badges
+        },
+      ],
+    },
+    {
+      title: "BARK Club Tier 3 Badge",
+      status: ProductStatus.PUBLISHED,
+      collection_id,
+      discountable: false,
+      subtitle: null,
+      description: "Exclusive badge for Club Tier 3 members. The pinnacle of club status.",
+      handle: "club-tier-3-badge",
+      is_giftcard: false,
+      weight: 50,
+      images: [
+        "https://example.com/images/club-tier-3-badge.png"
+      ],
+      options: [],
+      variants: [
+        {
+          title: "One Size",
+          prices: regions.map((region) => ({
+            currency_code: region.currency_code,
+            amount: 0, // Assuming badges are free
+          })),
+          options: [],
+          inventory_quantity: 1000, // Large inventory for badges
+          manage_inventory: false, // No need to manage inventory for badges
+        },
+      ],
+    },
+    {
+      title: "BARK Streetwear Jacket",
       status: ProductStatus.PUBLISHED,
       collection_id,
       discountable: true,
       subtitle: null,
-      description: "Reimagine the feeling of a classic T-shirt. With our cotton T-shirts, everyday essentials no longer have to be ordinary.",
-      handle: "medusa-t-shirt",
+      description: "Stylish streetwear jacket featuring BARK's unique design. Perfect for urban adventures.",
+      handle: "streetwear-jacket",
       is_giftcard: false,
-      weight: 400,
+      weight: 800,
       images: [
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-front.png",
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-back.png",
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-white-front.png",
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-white-back.png"
+        "https://example.com/images/streetwear-jacket-front.png",
+        "https://example.com/images/streetwear-jacket-back.png"
       ],
       options: [
         {
@@ -38,629 +116,105 @@ export default function getSampleProducts ({
         },
         {
           title: "Color",
-        }
+        },
       ],
       variants: [
         {
           title: "S / Black",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2200
-            }
-          }),
+          prices: regions.map((region) => ({
+            currency_code: region.currency_code,
+            amount: 5000,
+          })),
           options: [
             {
-              value: "S"
+              value: "S",
             },
             {
-              value: "Black"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "S / White",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2200
-            }
-          }),
-          options: [
-            {
-              value: "S"
+              value: "Black",
             },
-            {
-              value: "White"
-            }
           ],
           inventory_quantity: 100,
-          manage_inventory: true
+          manage_inventory: true,
         },
         {
           title: "M / Black",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2200
-            }
-          }),
+          prices: regions.map((region) => ({
+            currency_code: region.currency_code,
+            amount: 5000,
+          })),
           options: [
             {
-              value: "M"
+              value: "M",
             },
             {
-              value: "Black"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "M / White",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2200
-            }
-          }),
-          options: [
-            {
-              value: "M"
+              value: "Black",
             },
-            {
-              value: "White"
-            }
           ],
           inventory_quantity: 100,
-          manage_inventory: true
+          manage_inventory: true,
         },
         {
           title: "L / Black",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2200
-            }
-          }),
+          prices: regions.map((region) => ({
+            currency_code: region.currency_code,
+            amount: 5000,
+          })),
           options: [
             {
-              value: "L"
+              value: "L",
             },
             {
-              value: "Black"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "L / White",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2200
-            }
-          }),
-          options: [
-            {
-              value: "L"
+              value: "Black",
             },
-            {
-              value: "White"
-            }
           ],
           inventory_quantity: 100,
-          manage_inventory: true
+          manage_inventory: true,
         },
         {
           title: "XL / Black",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2200
-            }
-          }),
+          prices: regions.map((region) => ({
+            currency_code: region.currency_code,
+            amount: 5000,
+          })),
           options: [
             {
-              value: "XL"
+              value: "XL",
             },
             {
-              value: "Black"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "XL / White",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2200
-            }
-          }),
-          options: [
-            {
-              value: "XL"
+              value: "Black",
             },
-            {
-              value: "White"
-            }
           ],
           inventory_quantity: 100,
-          manage_inventory: true
-        }
-      ]
+          manage_inventory: true,
+        },
+      ],
     },
     {
-      title: "Medusa Sweatshirt",
+      title: "BARK Streetwear Cap",
       status: ProductStatus.PUBLISHED,
-      discountable: true,
       collection_id,
-      subtitle: null,
-      description: "Reimagine the feeling of a classic sweatshirt. With our cotton sweatshirt, everyday essentials no longer have to be ordinary.",
-      handle: "sweatshirt",
-      is_giftcard: false,
-      weight: 400,
-      images: [
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatshirt-vintage-front.png",
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatshirt-vintage-back.png"
-      ],
-      options: [
-        {
-          title: "Size",
-        }
-      ],
-      variants: [
-        {
-          title: "S",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 3350
-            }
-          }),
-          options: [
-            {
-              value: "S"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "M",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 3350
-            }
-          }),
-          options: [
-            {
-              value: "M"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "L",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 3350
-            }
-          }),
-          options: [
-            {
-              value: "L"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "XL",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 3350
-            }
-          }),
-          options: [
-            {
-              value: "XL"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        }
-      ]
-    },
-    {
-      title: "Medusa Sweatpants",
-      status: ProductStatus.PUBLISHED,
       discountable: true,
-      collection_id,
       subtitle: null,
-      description: "Reimagine the feeling of classic sweatpants. With our cotton sweatpants, everyday essentials no longer have to be ordinary.",
-      handle: "sweatpants",
+      description: "Trendy streetwear cap to complement your urban look. Adjustable and comfortable.",
+      handle: "streetwear-cap",
       is_giftcard: false,
-      weight: 400,
+      weight: 200,
       images: [
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatpants-gray-front.png",
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatpants-gray-back.png"
+        "https://example.com/images/streetwear-cap.png"
       ],
-      options: [
-        {
-          title: "Size",
-        }
-      ],
-      variants: [
-        {
-          title: "S",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 3350
-            }
-          }),
-          options: [
-            {
-              value: "S"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "M",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 3350
-            }
-          }),
-          options: [
-            {
-              value: "M"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "L",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 3350
-            }
-          }),
-          options: [
-            {
-              value: "L"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "XL",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 3350
-            }
-          }),
-          options: [
-            {
-              value: "XL"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        }
-      ]
-    },
-    {
-      title: "Medusa Shorts",
-      status: ProductStatus.PUBLISHED,
-      discountable: true,
-      collection_id,
-      subtitle: null,
-      description: "Reimagine the feeling of classic shorts. With our cotton shorts, everyday essentials no longer have to be ordinary.",
-      handle: "shorts",
-      is_giftcard: false,
-      weight: 400,
-      images: [
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/shorts-vintage-front.png",
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/shorts-vintage-back.png"
-      ],
-      options: [
-        {
-          title: "Size",
-        }
-      ],
-      variants: [
-        {
-          title: "S",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2850
-            }
-          }),
-          options: [
-            {
-              value: "S"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "M",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2850
-            }
-          }),
-          options: [
-            {
-              value: "M"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "L",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2850
-            }
-          }),
-          options: [
-            {
-              value: "L"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "XL",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 2850
-            }
-          }),
-          options: [
-            {
-              value: "XL"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        }
-      ]
-    },
-    {
-      title: "Medusa Hoodie",
-      status: ProductStatus.PUBLISHED,
-      discountable: true,
-      collection_id,
-      subtitle: null,
-      description: "Reimagine the feeling of a classic hoodie. With our cotton hoodie, everyday essentials no longer have to be ordinary.",
-      handle: "hoodie",
-      is_giftcard: false,
-      weight: 400,
-      images: [
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/black_hoodie_front.png",
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/black_hoodie_back.png"
-      ],
-      options: [
-        {
-          title: "Size",
-        }
-      ],
-      variants: [
-        {
-          title: "S",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 4150
-            }
-          }),
-          options: [
-            {
-              value: "S"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "M",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 4150
-            }
-          }),
-          options: [
-            {
-              value: "M"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "L",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 4150
-            }
-          }),
-          options: [
-            {
-              value: "L"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "XL",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 4150
-            }
-          }),
-          options: [
-            {
-              value: "XL"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        }
-      ]
-    },
-    {
-      title: "Medusa Longsleeve",
-      status: ProductStatus.PUBLISHED,
-      discountable: true,
-      collection_id,
-      subtitle: null,
-      description: "Reimagine the feeling of a classic longsleeve. With our cotton longsleeve, everyday essentials no longer have to be ordinary.",
-      handle: "longsleeve",
-      is_giftcard: false,
-      weight: 400,
-      images: [
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/ls-black-front.png",
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/ls-black-back.png"
-      ],
-      options: [
-        {
-          title: "Size",
-        }
-      ],
-      variants: [
-        {
-          title: "S",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 4150
-            }
-          }),
-          options: [
-            {
-              value: "S"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "M",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 4150
-            }
-          }),
-          options: [
-            {
-              value: "M"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "L",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 4150
-            }
-          }),
-          options: [
-            {
-              value: "L"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        },
-        {
-          title: "XL",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 4150
-            }
-          }),
-          options: [
-            {
-              value: "XL"
-            }
-          ],
-          inventory_quantity: 100,
-          manage_inventory: true
-        }
-      ]
-    },
-    {
-      title: "Medusa Coffee Mug",
-      status: ProductStatus.PUBLISHED,
-      discountable: true,
-      collection_id,
-      subtitle: null,
-      description: "Every programmer's best friend.",
-      handle: "coffee-mug",
-      is_giftcard: false,
-      weight: 400,
-      images: [
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
-      ],
-      options: [
-        {
-          title: "Size",
-        }
-      ],
+      options: [],
       variants: [
         {
           title: "One Size",
-          prices: regions.map((region) => {
-            return {
-              currency_code: region.currency_code,
-              amount: 1200
-            }
-          }),
-          options: [
-            {
-              value: "One Size"
-            }
-          ],
+          prices: regions.map((region) => ({
+            currency_code: region.currency_code,
+            amount: 2500,
+          })),
+          options: [],
           inventory_quantity: 100,
-          manage_inventory: true
-        }
-      ]
-    }
-  ]
+          manage_inventory: true,
+        },
+      ],
+    },
+  ];
 }
