@@ -59,6 +59,8 @@ const plugins = [
     resolve: 'medusa-plugin-variant-images',
     options: {
       enableUI: true,
+      autoMigrate: true,
+      defaultImage: 'https://ucarecdn.com/74392932-2ff5-4237-a1fa-e0fd15725ecc/bark.svg',
     },
   },
   {
@@ -81,6 +83,22 @@ const plugins = [
       clientId: process.env.PAYPAL_CLIENT_ID,
       clientSecret: process.env.PAYPAL_CLIENT_SECRET,
       authWebhookId: process.env.PAYPAL_AUTH_WEBHOOK_ID,
+    },
+  },
+  {
+    resolve: `medusa-payment-solana`,
+    options: {
+      solanaUrl: process.env.SOLANA_BLOCKCHAIN_URL, // Solana Blockchain URL
+      solanaApiKey: process.env.SOLANA_API_KEY, // Solana API key
+      usdcApiKey: process.env.USDC_API_KEY, // Circle API key for USDC payments
+      solanaPayApi: process.env.SOLANA_PAY_API, // Solana Pay API
+    },
+  },
+  {
+    resolve: `medusa-payment-bark`,
+    options: {
+      barkTokenPublicKey: "2NTvEssJ2i998V2cMGT4Fy3JhyFnAzHFonDo9dbAkVrg", // BARK token public key
+      merchantId: process.env.MERCHANT_ID, // Solana wallet address (Merchant ID)
     },
   },
 ];
